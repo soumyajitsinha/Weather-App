@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap");
+
+:root {
+  --sky-top: #1b1f4b;
+  --sky-mid: #5b3a8c;
+  --sky-low: #f08a6b;
+  --glass: rgba(255, 255, 255, 0.12);
+  --glass-strong: rgba(255, 255, 255, 0.2);
+  --glass-border: rgba(255, 255, 255, 0.28);
+  --text: #ffffff;
+  --text-soft: rgba(255, 255, 255, 0.72);
+  --accent: #ffc971;
+  --accent-dark: #3a2260;
+  --error-bg: rgba(170, 61, 61, 0.744);
+  --error-border: rgba(255, 140, 140, 0.55);
+  --error-text: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Sora", "Segoe UI", Arial, sans-serif;
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 16px;
+  background:
+    radial-gradient(circle at 50% 108%, rgba(255, 201, 113, 0.55) 0%, rgba(255, 201, 113, 0) 45%),
+    linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 55%, var(--sky-low) 100%);
+  background-attachment: fixed;
+}
+
+
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 32px 28px 36px;
+  text-align: center;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 28px;
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 24px 60px rgba(14, 10, 40, 0.45);
+}
+
+
+h1 {
+  margin-bottom: 24px;
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--text-soft);
+}
+
+
+
+.input-container {
+  display: flex;
+  gap: 8px;
+  padding: 6px;
+  margin-bottom: 8px;
+  background: rgba(0, 0, 0, 0.22);
+  border-radius: 999px;
+}
+
+input[type="text"] {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 16px;
+  font: inherit;
+  font-size: 15px;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  outline: none;
+}
+
+input[type="text"]::placeholder {
+  color: var(--text-soft);
+}
+
+.input-container:focus-within {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+button {
+  padding: 12px 20px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-dark);
+  background: var(--accent);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+button:hover {
+  background: #ffd994;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+
+
+#weather-info {
+  margin-top: 28px;
+  padding: 28px 16px 24px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 22px;
+  animation: rise 0.45s ease-out;
+}
+
+#city-name {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+#temperature {
+  margin: 8px 0 4px;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+}
+
+#description {
+  font-size: 18px;
+  color: var(--text-soft);
+  text-transform: capitalize;
+}
+
+
+
+#error-message {
+  margin-top: 24px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--error-text);
+  background: var(--error-bg);
+  border: 2px solid var(--error-border);
+  border-radius: 14px;
+  animation: rise 0.3s ease-out;
+}
+
+.hidden {
+  display: none;
+}
+
+
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #weather-info,
+  #error-message {
+    animation: none;
+  }
+  button {
+    transition: none;
+  }
+}
+
+
+
+@media (max-width: 380px) {
+  .container {
+    padding: 24px 18px 28px;
+  }
+  #temperature {
+    font-size: 56px;
+  }
+}
+ 
